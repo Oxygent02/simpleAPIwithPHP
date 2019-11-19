@@ -93,7 +93,6 @@ The following route is an example with localhost
     ]
 }
 ```
-```
 
 ##### Login Response Example
 ```json
