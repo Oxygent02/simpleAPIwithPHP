@@ -9,7 +9,7 @@ The following route is an example with localhost
 | ------ | ------ | ------ | ------ |
 | Get Categories | - | GET | http://localhost/[YOUR_REPO_NAME]/category/read.php|
 | Get All Products | - | GET | http://localhost/[YOUR_REPO_NAME]/product/read.php|
-| Get Products by Category | category_id(int) | GET | http://localhost/[YOUR_REPO_NAME]/product/read_by_category.php?id=[id_category] |
+| Get Products by Category | category_id(int) | GET | http://localhost/[YOUR_REPO_NAME]/product/read_by_category.php?category_id=[id_category] |
 | Delete Product | id(int) | POST | http://localhost/[YOUR_REPO_NAME]/product/delete.php?id=[id_product] |
 | Login | email(string), password(string) | POST | http://localhost/[YOUR_REPO_NAME]/user/login.php |
 | Register | nama(string), email(string), password(string)| POST | http://localhost/[YOUR_REPO_NAME]/user/register.php |
@@ -17,6 +17,7 @@ The following route is an example with localhost
 ##### Get All Products Response Example
 ```json
 {
+    "error": false,
     "records": [
         {
             "id": "60",
@@ -54,9 +55,49 @@ The following route is an example with localhost
 }
 ```
 
+##### Get Category Response Example
+```json
+{
+    "error": false,
+    "records": [
+        {
+            "id": "6",
+            "name": "Books",
+            "description": "Kindle books, audio books and more."
+        },
+        {
+            "id": "2",
+            "name": "Electronics",
+            "description": "Gadgets, drones and more."
+        },
+        {
+            "id": "1",
+            "name": "Fashion",
+            "description": "Category for anything related to fashion."
+        },
+        {
+            "id": "3",
+            "name": "Motors",
+            "description": "Motor sports and more"
+        },
+        {
+            "id": "5",
+            "name": "Movies",
+            "description": "Movie products."
+        },
+        {
+            "id": "13",
+            "name": "Sports",
+            "description": "Drop into new winter gear."
+        }
+    ]
+}
+```
+
 ##### Get Products by Category Response Example
 ```json
 {
+    "error": false,
     "records": [
         {
             "id": "60",
@@ -91,6 +132,14 @@ The following route is an example with localhost
             "category_name": "Fashion"
         }
     ]
+}
+```
+
+##### Login Request with JSON Example
+```json
+{
+    "email" : "user3@user.com",
+    "password" : "12345"
 }
 ```
 
@@ -112,6 +161,15 @@ Failed LOGIN
 {
     "error": true,
     "error_msg": "Login gagal. Password/Email salah"
+}
+```
+
+##### Register Request with JSON Example
+```json
+{
+    "nama" : "user4",
+    "email" : "user4@user.com",
+    "password" : "12345"
 }
 ```
 
