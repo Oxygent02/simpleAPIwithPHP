@@ -25,7 +25,7 @@ $num = $stmt->rowCount();
 if($num>0){
  
     // products array
-    $products_arr=array();
+    $products_arr=array("error" => FALSE);
     $products_arr["records"]=array();
  
     // retrieve our table contents
@@ -61,8 +61,9 @@ else{// no products found will be here
     http_response_code(404);
  
     // tell the user no products found
-    echo json_encode(
-        array("message" => "No products found.")
-    );
+    echo json_encode(array(
+        "error" => FALSE,
+        "message" => "No products found."
+    ));
 }
 ?>

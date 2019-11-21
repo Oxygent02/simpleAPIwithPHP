@@ -18,7 +18,7 @@ $db = $database->getConnection();
 $product = new Product($db);
  
 // set ID property of record to read
-$product->category_id = isset($_GET['id']) ? $_GET['id'] : die();
+$product->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
  
 // read the details of product to be edited
 $stmt = $product->readByCategory();
@@ -28,7 +28,7 @@ $num = $stmt->rowCount();
 if($num>0){
 
     // products array
-    $products_arr=array();
+    $products_arr=array("error" => FALSE);
     $products_arr["records"]=array();
     
     // create array
@@ -61,6 +61,9 @@ else{
     http_response_code(404);
  
     // tell the user product does not exist
-    echo json_encode(array("message" => "Product does not exist."));
+    echo json_encode(array(
+        "error" => FALSE,
+        "message" => "Product does not exist."
+    ));
 }
 ?>

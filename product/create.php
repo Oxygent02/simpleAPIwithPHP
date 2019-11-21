@@ -66,5 +66,3 @@ else{ // tell the user data is incomplete
 }
 
 ?>
-
-?>
